@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono-Variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --pa-bg: #0d1117;
+  --pa-bg-elevated: #161b22;
+  --pa-bg-hover: #1c2128;
+  --pa-border: #30363d;
+  --pa-text: #c9d1d9;
+  --pa-text-muted: #8b949e;
+  --pa-heading: #e6edf3;
+  --pa-primary: #58a6ff;
+  --pa-primary-hover: #79c0ff;
+  --pa-warning: #d29922;
+  --md-text-font: "Inter", system-ui, -apple-system, sans-serif;
+  --md-code-font: "JetBrains Mono", "Cascadia Code", monospace;
+  --md-primary-fg-color: #161b22;
+  --md-primary-fg-color--light: #30363d;
+  --md-primary-fg-color--dark: #0d1117;
+  --md-accent-fg-color: #0969da;
+}
+
+body[data-md-color-primary] {
+  --md-primary-fg-color: #161b22;
+  --md-primary-fg-color--light: #30363d;
+  --md-primary-fg-color--dark: #0d1117;
+}
+
+body[data-md-color-accent] {
+  --md-accent-fg-color: #0969da;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: var(--pa-bg);
+  --md-default-fg-color: var(--pa-text);
+  --md-default-fg-color--light: var(--pa-text-muted);
+  --md-default-fg-color--lighter: #6e7681;
+  --md-default-fg-color--lightest: var(--pa-border);
+  --md-code-bg-color: var(--pa-bg-elevated);
+  --md-code-fg-color: var(--pa-text);
+  --md-typeset-a-color: var(--pa-primary);
+  --md-accent-fg-color: var(--pa-primary-hover);
+}
+
+.md-header,
+.md-tabs {
+  background: var(--pa-bg-elevated);
+  border-bottom: 1px solid var(--pa-border);
+  box-shadow: none;
+}
+
+.md-header__title {
+  font-family: var(--md-code-font);
+  font-weight: 600;
+}
+
+.md-logo img {
+  width: 2rem;
+  height: 1.35rem;
+  object-fit: contain;
+}
+
+.md-main__inner {
+  max-width: 1100px;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h2 {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset code,
+.md-typeset pre,
+.md-search-result__meta {
+  font-family: var(--md-code-font);
+}
+
+.md-typeset table:not([class]) {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.md-typeset table:not([class]) th {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 80%, var(--md-default-bg-color));
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .highlight,
+.md-typeset details,
+.md-typeset .admonition,
+.md-typeset .md-button {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.md-typeset .md-button {
+  border-width: 1px;
+}
+
+.md-typeset .md-button--primary {
+  background: transparent;
+  border-color: var(--md-typeset-a-color);
+  color: var(--md-typeset-a-color);
+}
+
+.md-typeset .md-button--primary:hover {
+  background: var(--md-typeset-a-color);
+  color: var(--md-default-bg-color);
+}
+
+.practice-cta {
+  margin: 1.25rem 0 0.5rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 3px solid var(--md-typeset-a-color);
+  background: color-mix(in srgb, var(--md-typeset-a-color) 8%, var(--md-default-bg-color));
+}
+
+.practice-cta p:first-child {
+  margin-top: 0;
+}
+
+.practice-cta .md-button {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0 0;
+  background: transparent;
+  border: 1px solid var(--md-typeset-a-color);
+  color: var(--md-typeset-a-color);
+}
+
+.practice-cta .md-button:hover {
+  background: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+  color: #ffffff;
+}
+
+.practice-cta .md-button--primary {
+  background: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+  color: #ffffff;
+}
+
+.practice-cta .md-button--primary:hover {
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: #ffffff;
+}
+
+.md-typeset a.star-cta {
+  display: block;
+  margin: 2rem 0 0.75rem;
+  padding: 0.85rem 1.15rem;
+  border: 1px dashed color-mix(in srgb, var(--pa-warning) 65%, var(--md-default-fg-color));
+  text-align: center;
+  background: color-mix(in srgb, var(--pa-warning) 9%, var(--md-default-bg-color));
+  color: inherit;
+  text-decoration: none;
+}
+
+.md-typeset a.star-cta .star-cta-link {
+  color: var(--md-typeset-a-color);
+  font-weight: 600;
+}
+
+.md-typeset a.star-cta:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.md-typeset a.star-cta:hover .star-cta-link {
+  color: var(--md-accent-fg-color);
+  text-decoration: underline;
+}
+
+.md-sidebar--primary .md-nav__item--nested > .md-nav__link,
+.md-sidebar--primary .md-nav__item--section > .md-nav__link {
+  color: var(--pa-warning);
+  font-weight: 600;
+}
+
+.md-nav__link--active,
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
