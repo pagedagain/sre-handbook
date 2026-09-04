@@ -38,4 +38,6 @@ nav:
   - Home: index.md
   - Interview Explainers:
       - What Happens When You Type a URL: interview/what-happens-when-you-type-a-url.md
+  - Core Concepts:
+      - Linux Memory Management: concepts/linux-memory-management.md
   - Browse by Topic: tags.md
