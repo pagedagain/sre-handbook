@@ -14,6 +14,7 @@ Short reference guides for the commands, failure modes, and system behavior SREs
 ## Core Concepts
 
 - [Linux Memory Management Explained](concepts/linux-memory-management.md)
+- [Linux File Permissions Explained](concepts/linux-file-permissions.md)
 
 Practice the failure modes in an isolated terminal at [Paged Again](https://pagedagain.com/incidents?utm_source=runbooks&utm_medium=concept&utm_campaign=home).
 
