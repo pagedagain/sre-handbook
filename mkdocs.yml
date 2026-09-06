@@ -40,4 +40,5 @@ nav:
       - What Happens When You Type a URL: interview/what-happens-when-you-type-a-url.md
   - Core Concepts:
       - Linux Memory Management: concepts/linux-memory-management.md
+      - Linux File Permissions: concepts/linux-file-permissions.md
   - Browse by Topic: tags.md

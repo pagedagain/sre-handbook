@@ -32,7 +32,8 @@ Each process sees a virtual address space that can be larger than physical RAM. 
 List the largest resident process sets in MiB:
 
 ```bash
-ps -eo pid,ppid,user,rss,vsz,%mem,comm --sort=-rss | awk 'NR==1 {print; next} NR<=16 {$4=sprintf("%.1fM",$4/1024); $5=sprintf("%.1fM",$5/1024); print}'
+ps -eo pid,ppid,user,rss,vsz,%mem,comm --sort=-rss | \
+  awk 'NR==1 {print; next} NR<=16 {$4=sprintf("%.1fM",$4/1024); $5=sprintf("%.1fM",$5/1024); print}'
 ```
 
 ### Cache is reclaimable memory
@@ -42,7 +43,8 @@ The kernel caches file data, directory metadata, and filesystem structures becau
 Compare free, available, cache, and reclaimable slab:
 
 ```bash
-free -h; grep -E '^(MemFree|MemAvailable|Cached|SReclaimable|SwapFree):' /proc/meminfo
+free -h
+grep -E '^(MemFree|MemAvailable|Cached|SReclaimable|SwapFree):' /proc/meminfo
 ```
 
 ### Limits and pressure decide OOM behavior
@@ -52,7 +54,12 @@ The host can run out of memory, but a process can also hit a cgroup limit while 
 Show the current shell's cgroup usage, limit, and event counters:
 
 ```bash
-CGROUP=$(awk -F: '$1=="0" {print $3}' /proc/self/cgroup); printf 'current='; cat "/sys/fs/cgroup${CGROUP}/memory.current"; printf 'max='; cat "/sys/fs/cgroup${CGROUP}/memory.max"; cat "/sys/fs/cgroup${CGROUP}/memory.events"
+CGROUP=$(awk -F: '$1=="0" {print $3}' /proc/self/cgroup)
+printf 'current='
+cat "/sys/fs/cgroup${CGROUP}/memory.current"
+printf 'max='
+cat "/sys/fs/cgroup${CGROUP}/memory.max"
+cat "/sys/fs/cgroup${CGROUP}/memory.events"
 ```
 
 ## Common Scenarios
@@ -70,7 +77,9 @@ free -h; vmstat 1 5
 Rank resident memory, then inspect the largest process's rollup counters:
 
 ```bash
-PID=$(ps -eo pid=,rss= --sort=-rss | awk 'NR==1 {print $1}'); ps -p "$PID" -o pid,ppid,user,lstart,rss,vsz,%mem,cmd; grep -E '^(Rss|Pss|Private|Shared|Swap):' "/proc/$PID/smaps_rollup"
+PID=$(ps -eo pid=,rss= --sort=-rss | awk 'NR==1 {print $1}')
+ps -p "$PID" -o pid,ppid,user,lstart,rss,vsz,%mem,cmd
+grep -E '^(Rss|Pss|Private|Shared|Swap):' "/proc/$PID/smaps_rollup"
 ```
 
 ### A process disappeared without an application error
@@ -78,7 +87,8 @@ PID=$(ps -eo pid=,rss= --sort=-rss | awk 'NR==1 {print $1}'); ps -p "$PID" -o pi
 Search recent kernel messages for host or cgroup OOM evidence:
 
 ```bash
-sudo journalctl -k --since '-1 hour' | grep -Ei 'out of memory|oom-kill|killed process|memory cgroup'
+sudo journalctl -k --since '-1 hour' | \
+  grep -Ei 'out of memory|oom-kill|killed process|memory cgroup'
 ```
 
 ### Swap activity is causing latency
