@@ -16,6 +16,10 @@ Short reference guides for the commands, failure modes, and system behavior SREs
 - [Linux Memory Management Explained](concepts/linux-memory-management.md)
 - [Linux File Permissions Explained](concepts/linux-file-permissions.md)
 
+## Troubleshooting
+
+- [How to Find What Is Using Disk Space on Linux](troubleshooting/find-disk-space-linux.md)
+
 Practice the failure modes in an isolated terminal at [Paged Again](https://pagedagain.com/incidents?utm_source=runbooks&utm_medium=concept&utm_campaign=home).
 
 <a class="star-cta" href="https://github.com/pagedagain/sre-handbook">Found this useful? <span class="star-cta-link">Star the handbook repo</span> to help other SREs find it.</a>

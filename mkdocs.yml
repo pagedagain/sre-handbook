@@ -41,4 +41,6 @@ nav:
   - Core Concepts:
       - Linux Memory Management: concepts/linux-memory-management.md
       - Linux File Permissions: concepts/linux-file-permissions.md
+  - Troubleshooting:
+      - Find What Is Using Disk Space: troubleshooting/find-disk-space-linux.md
   - Browse by Topic: tags.md
